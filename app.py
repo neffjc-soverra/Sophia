@@ -39,9 +39,10 @@ with st.sidebar:
     - Real search is rate-limited
     
     ### Tips
-    - Uncheck "Use real web search" for faster processing
-    - Real search may take 1-2 minutes per hospital
+    - Web search is ENABLED by default
+    - Processing takes 1-2 minutes per hospital
     - Review LOW confidence results manually
+    - Uncheck "Use real web search" for instant testing
     """)
 
 st.subheader("📥 Step 1: Download Template")
@@ -126,13 +127,16 @@ if uploaded_file is not None:
         
         col1, col2 = st.columns(2)
         with col1:
-            use_real_search = st.checkbox('Use real web search (slower)', value=False, help="Enable to search actual websites. Will take 1-2 minutes per hospital.")
+            # CHANGED: value=True enables search by default
+            use_real_search = st.checkbox('Use real web search', value=True, help="Enabled by default. Uncheck for instant testing (all results will be UNKNOWN).")
         with col2:
             use_async = st.checkbox('Use concurrent processing (experimental)', value=False, help="Process multiple hospitals simultaneously. Faster but may hit rate limits.", disabled=not use_real_search)
         
         if use_real_search:
             estimated_time = len(df) * 1.5 if not use_async else len(df) * 0.5
             st.warning(f"⏱️ Estimated processing time: {estimated_time:.1f} minutes")
+        else:
+            st.info("ℹ️ Web search is disabled. Results will be marked UNKNOWN for instant testing.")
         
         if st.button('▶️ Run Verification', type="primary"):
             pos_keywords = parse_keywords(pos_text)
