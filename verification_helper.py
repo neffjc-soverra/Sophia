@@ -60,7 +60,8 @@ def query_hospital_website(name: str, city: str, state: str, address: str) -> Li
     try:
         from duckduckgo_search import DDGS
         
-        query = f"{name} {address} {city} {state} labor delivery maternity"
+        # Broader search - just hospital name, address, and location
+        query = f"{name} {address} {city} {state}"
         
         with DDGS() as ddgs:
             results = list(ddgs.text(query, max_results=5))
@@ -127,7 +128,8 @@ def query_cms_hospital_compare(name: str, city: str, state: str) -> List[Dict[st
     snippets = []
     try:
         from duckduckgo_search import DDGS
-        search_query = f'site:medicare.gov "{name}" {city} hospital compare'
+        # Broader search - just hospital name and location on Medicare site
+        search_query = f'site:medicare.gov "{name}" {city} {state}'
         
         with DDGS() as ddgs:
             results = list(ddgs.text(search_query, max_results=2))
@@ -161,7 +163,8 @@ def query_news_and_changes(name: str, city: str, state: str, year: int) -> List[
     try:
         from duckduckgo_search import DDGS
         
-        query = f"{name} {city} {state} maternity closure merger {year}"
+        # Broader search - just hospital name, location, and year
+        query = f"{name} {city} {state} {year}"
         
         with DDGS() as ddgs:
             results = list(ddgs.text(query, max_results=3))
