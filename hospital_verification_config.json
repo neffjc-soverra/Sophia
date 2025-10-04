@@ -1,0 +1,59 @@
+{
+  "search_instructions": {
+    "priority_sources": [
+      "Hospital website",
+      "WA Dept of Health",
+      "CMS data",
+      "News articles"
+    ],
+    "evidence_rules": {
+      "no_clear_evidence": "UNKNOWN",
+      "clear_evidence_yes": "YES",
+      "clear_evidence_no": "NO",
+      "require_multiple_positive_matches": true,
+      "negative_overrides_single_positive": true,
+      "minimum_positive_for_high_confidence": 2
+    },
+    "keywords": {
+      "maternity_positive": [
+        "labor and delivery",
+        "birthing center",
+        "maternity ward",
+        "postpartum",
+        "OB unit",
+        "obstetrics",
+        "obstetric",
+        "L&D",
+        "NICU",
+        "newborn nursery",
+        "perinatal",
+        "childbirth",
+        "delivery room",
+        "maternity services"
+      ],
+      "maternity_negative": [
+        "no maternity",
+        "no obstetrics",
+        "no OB services",
+        "closed maternity",
+        "discontinued labor",
+        "maternity closure",
+        "suspended obstetric",
+        "no longer offers maternity"
+      ],
+      "facility_type_exclusions": [
+        "behavioral health",
+        "psychiatric",
+        "rehabilitation",
+        "long-term acute care",
+        "specialty hospital",
+        "urgent care",
+        "outpatient only"
+      ]
+    }
+  },
+  "geographic_filters": {
+    "state": "WA",
+    "focus_regions": []
+  }
+}
