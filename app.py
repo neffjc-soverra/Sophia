@@ -65,7 +65,13 @@ template_df = pd.DataFrame({
     'zip': ['98101', '98402'],
     'year': [2023, 2024],
     'observice': ['1.by staff', '0.none'],
-    'mattotal': [5, 0]
+    'mattotal': [5, 0],
+    'verified_ld_service': ['', ''],
+    'ld_bed_count': ['', ''],
+    'verification_source': ['', ''],
+    'confidence_level': ['', ''],
+    'notes': ['', ''],
+    'discrepancy_flag': ['', '']
 })
 buffer = BytesIO()
 template_df.to_excel(buffer, index=False, engine='openpyxl')
@@ -74,7 +80,7 @@ st.download_button(
     '📄 Download Template', 
     buffer.getvalue(), 
     file_name='hospital_verification_template.xlsx',
-    help="Template with required columns"
+    help="Template with required columns and verification fields (leave verification columns empty)"
 )
 
 st.subheader("📤 Step 2: Upload Your File")
